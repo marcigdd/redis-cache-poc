@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { links } from '../data/links';
+import { teamMembers } from '../data/teamMembers';
 
 const prisma = new PrismaClient();
 
@@ -11,8 +11,8 @@ async function main() {
     },
   });
 
-  await prisma.link.createMany({
-    data: links,
+  await prisma.teamMember.createMany({
+    data: teamMembers,
   });
 }
 
