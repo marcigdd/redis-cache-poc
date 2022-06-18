@@ -12,13 +12,10 @@ const Team = gql`
 `;
 
 function Home() {
-  const { data, loading, error } = useQuery(Team, {
-    variables: {},
-  });
+  const { data, loading, error } = useQuery(Team);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Oh no... {error.message}</p>;
 
-  const { endCursor, hasNextPage } = data?.links.pageInfo;
 
   return (
     <div>
@@ -28,10 +25,10 @@ function Home() {
       </Head>
       <div className="container mx-auto max-w-5xl my-20 px-5">
         <div>
-          {data?.name.map(i => 
+          {data.teamMembers.map(i=> 
             <div>
               <a>
-                <TeamMembers id={i} name={i}/>
+                <TeamMembers id={i.name} name={i.name}/>
               </a>
             </div>
           )}

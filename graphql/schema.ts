@@ -12,14 +12,8 @@ export const typeDefs = gql `
   name: String
   weakness: String
  }
- type User {
-  id: String
-  email: String
-  image: String
-  role: String
- }
 
 type Query {
-  teamMembers: [TeamMember]
+  teamMembers: [TeamMember]!
 }
 `;
